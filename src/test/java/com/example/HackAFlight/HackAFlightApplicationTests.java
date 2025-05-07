@@ -1,0 +1,13 @@
+package com.example.HackAFlight;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class HackAFlightApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
