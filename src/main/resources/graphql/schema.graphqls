@@ -1,17 +1,74 @@
 type Query{
     getFlightByName(
         name: String!
-        price: Float
-        status: String
-        airline: String
     ): Flight
+
+    getAllBookings: [Booking]
+
+    getPassengerBookings(passengerId: ID!): [Booking]
+
+    getFlightBookings(flightId: ID!): [Booking]
+}
+
+type Mutation {
+    createBooking(
+        passengerId: ID!
+        flightId: ID!
+        bookingDate: String!
+        status: String!
+    ): Booking
+
+    createAirLine(
+        name: String!
+        code: String!
+        country: String!
+    ): Airline
+}
+
+type Booking {
+    id: ID!
+    passenger: Passenger!
+    flight: Flight!
+    bookingDate: String!
+    status: String!
+    seatNumber: String!
+}
+
+type Passenger {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String
+    phoneNumber: String
+    passportNumber: String
+
 }
 
 type Flight {
+    id: ID!
     name: String!
-    seats: Int
-    color: String
-    airline: String
-    price: Float
-    status: String
+    originAirport: Airport
+    destinationAirport: Airport
+    departureTime: String
+    arrivalTime: String
+    airline: Airline
 }
+
+type Airport {
+    id: ID!
+    country: String
+    city: String
+    name:String
+    code:String
+}
+
+type Airline {
+    id: ID!
+    name: String!
+    code: String
+    country: String
+}
+
+
+
+

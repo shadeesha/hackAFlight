@@ -32,7 +32,8 @@ public class Booking {
     @Column
     private String seatNumber;
 
-    public Booking(String seatNumber, String status, String bookingDate, Flight flight, Passenger passenger) {
+    public Booking(Long id, String seatNumber, String status, String bookingDate, Flight flight, Passenger passenger) {
+        this.id = id;
         this.seatNumber = seatNumber;
         this.status = status;
         this.bookingDate = bookingDate;

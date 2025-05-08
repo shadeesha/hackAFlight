@@ -12,13 +12,10 @@ public class FlightController {
 
     @QueryMapping
     public Flight getFlightByName(
-            @Argument("name") String name,
-            @Argument("price") Double price,
-            @Argument("status") String status,
-            @Argument("airline") String airlineName) {
-        Airline airLine = new Airline(airlineName, "MK40", "England");
-        Airport originAirport = new Airport("England", "London", "Hethrow", "600");
-        Airport destinationAirport = new Airport("Sri Lanka", "Colombo", "BNK", "600");
-        return new Flight(airLine, "TODAY", "TOMORROW", originAirport, destinationAirport, name);
+            @Argument("name") String name) {
+        Airline airLine = new Airline(1L, "Sri Lankan AirLine", "MK40", "England");
+        Airport originAirport = new Airport(1L,"England", "London", "Hethrow", "600");
+        Airport destinationAirport = new Airport(1L, "Sri Lanka", "Colombo", "BNK", "600");
+        return new Flight(1L, airLine, "TODAY", "TOMORROW", originAirport, destinationAirport, name);
     }
 }

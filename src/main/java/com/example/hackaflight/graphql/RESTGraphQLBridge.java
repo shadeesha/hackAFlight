@@ -53,7 +53,7 @@ public class RESTGraphQLBridge {
             log.info("Got query results successfully");
             log.info("REQ::END");
             return result.toSpecification();
-        }catch (IOException e) {
+        } catch (IOException e) {
             log.info("Error occurred during query execution", e);
 
             Map<String, Object> errorResponse = Map.of(

@@ -35,7 +35,8 @@ public class Flight {
     @JoinColumn(name = "airline_id")
     private Airline airline;
 
-    public Flight(Airline airline, String arrivalTime, String departureTime, Airport originAirport, Airport destinationAirport, String name) {
+    public Flight(Long id, Airline airline, String arrivalTime, String departureTime, Airport originAirport, Airport destinationAirport, String name) {
+        this.id = id;
         this.airline = airline;
         this.arrivalTime = arrivalTime;
         this.departureTime = departureTime;

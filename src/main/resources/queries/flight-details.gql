@@ -1,20 +1,31 @@
-query (
+query flightDetails(
     $name: String!
-    $price: Float
-    $status: String
-    $airline: String
 ) {
     getFlightByName(
         name: $name
-        price: $price
-        status: $status
-        airline: $airline
     ) {
         name
-        seats
-        color
-        airline
-        price
-        status
+        originAirport {
+            id
+            name
+            city
+            country
+            code
+        }
+        destinationAirport {
+            id
+            name
+            city
+            country
+            code
+        }
+        departureTime
+        arrivalTime
+        airline {
+            id
+            name
+            code
+            country
+        }
     }
 }

@@ -23,10 +23,17 @@ public class Airline {
     @Column
     private String country;
 
-    public Airline(String name, String code, String country) {
+    public Airline(Long id, String name, String code, String country) {
+        this.id = id;
         this.name = name;
         this.code = code;
         this.country = country;
+    }
+
+    public Airline(String country, String code, String name) {
+        this.country = country;
+        this.code = code;
+        this.name = name;
     }
 
     @Override

@@ -30,7 +30,8 @@ public class Payment {
     @Column
     private String status;
 
-    public Payment(String status, double amount, String paymentDate, String method, Booking booking) {
+    public Payment(Long id, String status, double amount, String paymentDate, String method, Booking booking) {
+        this.id = id;
         this.status = status;
         this.amount = amount;
         this.paymentDate = paymentDate;

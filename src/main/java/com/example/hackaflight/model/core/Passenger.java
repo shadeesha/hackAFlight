@@ -29,7 +29,8 @@ public class Passenger {
     @Column
     private String passportNumber;
 
-    public Passenger(String passportNumber, String phoneNumber, String email, String lastName, String firstName) {
+    public Passenger(Long id, String passportNumber, String phoneNumber, String email, String lastName, String firstName) {
+        this.id = id;
         this.passportNumber = passportNumber;
         this.phoneNumber = phoneNumber;
         this.email = email;
