@@ -1,0 +1,90 @@
+type Query{
+    getFlightByName(
+        name: String!
+    ): Flight
+
+    getAllBookings: [Booking]
+
+    getPassengerBookings(passengerId: ID!): [Booking]
+
+    getFlightBookings(flightId: ID!): [Booking]
+}
+
+type Mutation {
+    createBooking(
+        passengerId: ID!
+        flightId: ID!
+        bookingDate: String!
+        status: String!
+    ): Booking
+
+    createAirLine(
+        name: String!
+        code: String!
+        country: String!
+    ): Airline
+
+    createAirport(
+        code: String!
+        name: String!
+        city: String!
+        country: String!
+    ): Airport
+
+    createFlight(
+        name: String!
+        originAirport: ID!
+        destinationAirport: ID!
+        departureTime: String!
+        arrivalTime: String!
+        airline: ID!
+    ): Flight
+}
+
+type Booking {
+    id: ID!
+    passenger: Passenger!
+    flight: Flight!
+    bookingDate: String!
+    status: String!
+    seatNumber: String!
+}
+
+type Passenger {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String
+    phoneNumber: String
+    passportNumber: String
+
+}
+
+type Flight {
+    id: ID!
+    name: String!
+    originAirport: Airport
+    destinationAirport: Airport
+    departureTime: String
+    arrivalTime: String
+    airline: Airline
+}
+
+type Airport {
+    id: ID!
+    country: String
+    city: String
+    name:String
+    code:String
+}
+
+type Airline {
+    id: ID!
+    name: String!
+    code: String
+    country: String
+}
+
+
+
+

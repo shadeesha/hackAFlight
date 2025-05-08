@@ -1,0 +1,16 @@
+mutation createAirLine(
+    $name: String!
+    $code: String!
+    $country: String!
+) {
+    createAirLine(
+        name: $name
+        code: $code
+        country: $country
+    ) {
+        id
+        country
+        code
+        country
+    }
+}

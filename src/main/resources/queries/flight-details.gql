@@ -1,0 +1,31 @@
+query flightDetails(
+    $name: String!
+) {
+    getFlightByName(
+        name: $name
+    ) {
+        name
+        originAirport {
+            id
+            name
+            city
+            country
+            code
+        }
+        destinationAirport {
+            id
+            name
+            city
+            country
+            code
+        }
+        departureTime
+        arrivalTime
+        airline {
+            id
+            name
+            code
+            country
+        }
+    }
+}

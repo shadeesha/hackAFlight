@@ -1,4 +1,4 @@
-package com.example.HackAFlight;
+package com.example.hackaflight;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
