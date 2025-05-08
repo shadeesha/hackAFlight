@@ -1,0 +1,49 @@
+mutation addBooking(
+    $passengerId: ID!
+    $flightId: ID!
+    $bookingDate: String!
+    $status: String!
+    $seatNumber: String!
+) {
+    addBooking(
+        passengerId: $passengerId
+        flightId: $flightId
+        bookingDate: $bookingDate
+        status: $status
+        seatNumber: $seatNumber
+    ) {
+        id
+        status
+        bookingDate
+        seatNumber
+        passenger {
+            id
+            firstName
+            lastName
+            passportNumber
+            email
+            phoneNumber
+        }
+        flight {
+            id
+            name
+            originAirport {
+                id
+                name
+                country
+            }
+            destinationAirport {
+                id
+                name
+                country
+            }
+            departureTime
+            arrivalTime
+            airline {
+                id
+                name
+                country
+            }
+        }
+    }
+}

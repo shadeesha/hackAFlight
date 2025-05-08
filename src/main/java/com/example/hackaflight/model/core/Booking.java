@@ -1,6 +1,5 @@
 package com.example.hackaflight.model.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +30,16 @@ public class Booking {
 
     @Column
     private String seatNumber;
+
+    public Booking(){}
+
+    public Booking(Passenger passenger, Flight flight, String bookingDate, String status, String seatNumber) {
+        this.passenger = passenger;
+        this.flight = flight;
+        this.bookingDate = bookingDate;
+        this.status = status;
+        this.seatNumber = seatNumber;
+    }
 
     public Booking(Long id, String seatNumber, String status, String bookingDate, Flight flight, Passenger passenger) {
         this.id = id;

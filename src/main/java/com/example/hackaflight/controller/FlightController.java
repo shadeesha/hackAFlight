@@ -1,7 +1,5 @@
 package com.example.hackaflight.controller;
 
-import com.example.hackaflight.model.core.Airline;
-import com.example.hackaflight.model.core.Airport;
 import com.example.hackaflight.model.core.Flight;
 import com.example.hackaflight.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +16,9 @@ public class FlightController {
 
     @QueryMapping
     public Flight getFlightByName(
-            @Argument("name") String name) {
-        Airline airLine = new Airline(1L, "Sri Lankan AirLine", "MK40", "England");
-        Airport originAirport = new Airport(1L,"England", "London", "Hethrow", "600");
-        Airport destinationAirport = new Airport(1L, "Sri Lanka", "Colombo", "BNK", "600");
-        return new Flight(1L, airLine, "TODAY", "TOMORROW", originAirport, destinationAirport, name);
+            @Argument("name") String name
+    ) throws Exception {
+        return flightService.findFlightByName(name);
     }
 
     @MutationMapping

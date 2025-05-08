@@ -11,11 +11,12 @@ type Query{
 }
 
 type Mutation {
-    createBooking(
+    addBooking(
         passengerId: ID!
         flightId: ID!
         bookingDate: String!
         status: String!
+        seatNumber: String!
     ): Booking
 
     createAirLine(
@@ -39,6 +40,14 @@ type Mutation {
         arrivalTime: String!
         airline: ID!
     ): Flight
+
+    createPassenger(
+        firstName: String!
+        lastName: String!
+        email: String
+        phoneNumber: String
+        passportNumber: String!
+    ): Passenger
 }
 
 type Booking {
