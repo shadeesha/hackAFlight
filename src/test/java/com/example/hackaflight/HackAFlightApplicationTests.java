@@ -1,4 +1,4 @@
-package com.example.HackAFlight;
+package com.example.hackaflight;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
