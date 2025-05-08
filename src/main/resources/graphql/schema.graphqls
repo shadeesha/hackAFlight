@@ -1,9 +1,17 @@
 type Query{
-    getFlightByName(name: String!): Flight
+    getFlightByName(
+        name: String!
+        price: Float
+        status: String
+        airline: String
+    ): Flight
 }
 
 type Flight {
     name: String!
-    seats: Int!
-    color: String!
+    seats: Int
+    color: String
+    airline: String
+    price: Float
+    status: String
 }

@@ -1,0 +1,44 @@
+package com.example.hackaflight.model.core;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+@Table(name = "tairport")
+public class Airport {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+
+    @Column
+    private String name;
+
+    @Column
+    private String city;
+
+    @Column
+    private String country;
+
+    public Airport(String country, String city, String name, String code) {
+        this.country = country;
+        this.city = city;
+        this.name = name;
+        this.code = code;
+    }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
+}

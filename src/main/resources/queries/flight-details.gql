@@ -1,7 +1,20 @@
-query ($name: String!) {
-    getFlightByName(name: $name) {
+query (
+    $name: String!
+    $price: Float
+    $status: String
+    $airline: String
+) {
+    getFlightByName(
+        name: $name
+        price: $price
+        status: $status
+        airline: $airline
+    ) {
         name
         seats
         color
+        airline
+        price
+        status
     }
 }
