@@ -1,0 +1,19 @@
+mutation createAirport (
+    $code: String!
+    $name: String!
+    $city: String!
+    $country: String!
+){
+    createAirport(
+        code: $code
+        name: $name
+        city: $city
+        country: $country
+    ) {
+        id
+        code
+        name
+        city
+        country
+    }
+}

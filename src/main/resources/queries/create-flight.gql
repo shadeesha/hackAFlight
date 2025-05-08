@@ -1,0 +1,42 @@
+mutation createFlight(
+    $name: String!
+    $originAirport: ID!
+    $destinationAirport: ID!
+    $departureTime: String!
+    $arrivalTime: String!
+    $airline: ID!
+) {
+    createFlight(
+        name: $name
+        originAirport: $originAirport
+        destinationAirport: $destinationAirport
+        arrivalTime: $arrivalTime
+        departureTime: $departureTime
+        airline: $airline
+    ) {
+        id
+        name
+        originAirport {
+            id
+            name
+            code
+            city
+            country
+        }
+        destinationAirport {
+            id
+            name
+            code
+            city
+            country
+        }
+        departureTime
+        arrivalTime
+        airline {
+            id
+            name
+            code
+            country
+        }
+    }
+}

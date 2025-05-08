@@ -23,6 +23,22 @@ type Mutation {
         code: String!
         country: String!
     ): Airline
+
+    createAirport(
+        code: String!
+        name: String!
+        city: String!
+        country: String!
+    ): Airport
+
+    createFlight(
+        name: String!
+        originAirport: ID!
+        destinationAirport: ID!
+        departureTime: String!
+        arrivalTime: String!
+        airline: ID!
+    ): Flight
 }
 
 type Booking {

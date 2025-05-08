@@ -1,4 +1,7 @@
 package com.example.hackaflight.repository;
 
-public class FlightRepository {
+import com.example.hackaflight.model.core.Flight;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FlightRepository extends JpaRepository<Flight, Long> {
 }

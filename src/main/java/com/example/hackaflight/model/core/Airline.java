@@ -23,6 +23,10 @@ public class Airline {
     @Column
     private String country;
 
+    public Airline() {
+
+    }
+
     public Airline(Long id, String name, String code, String country) {
         this.id = id;
         this.name = name;

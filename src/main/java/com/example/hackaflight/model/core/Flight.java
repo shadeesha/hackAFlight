@@ -35,6 +35,10 @@ public class Flight {
     @JoinColumn(name = "airline_id")
     private Airline airline;
 
+    public Flight(){
+
+    }
+
     public Flight(Long id, Airline airline, String arrivalTime, String departureTime, Airport originAirport, Airport destinationAirport, String name) {
         this.id = id;
         this.airline = airline;
@@ -43,6 +47,15 @@ public class Flight {
         this.originAirport = originAirport;
         this.destinationAirport = destinationAirport;
         this.name = name;
+    }
+
+    public Flight(String name, Airport originAirport, Airport destinationAirport, String departureTime, String arrivalTime, Airline airline) {
+        this.name = name;
+        this.originAirport = originAirport;
+        this.destinationAirport = destinationAirport;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.airline = airline;
     }
 
     @Override
