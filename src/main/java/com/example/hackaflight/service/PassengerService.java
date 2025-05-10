@@ -30,8 +30,7 @@ public class PassengerService {
                 passportNumber
         );
 
-        log.info("Passenger created successfully : {} {}", firstName, lastName);
-
+        log.info("Saving Passenger : {} {}", firstName, lastName);
         return passengerRepository.save(passenger);
     }
 }

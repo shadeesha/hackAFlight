@@ -24,19 +24,18 @@ public class FlightController {
     @MutationMapping
     public Flight createFlight(
             @Argument("name") String name,
-            @Argument("originAirport") Long originAirportId,
-            @Argument("destinationAirport") Long destinationAirportId,
             @Argument("departureTime") String departureTime,
             @Argument("arrivalTime") String arrivalTime,
-            @Argument("airline") Long airline
+            @Argument("airline") Long airline,
+            @Argument("routeId") Long routeId
     ) throws Exception {
         Flight flight = flightService.createFlight(
                 name,
-                originAirportId,
-                destinationAirportId,
                 departureTime,
                 arrivalTime,
-                airline);
+                airline,
+                routeId
+        );
 
         if(flight != null) {
             return flight;

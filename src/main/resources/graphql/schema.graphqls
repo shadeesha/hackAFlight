@@ -16,7 +16,9 @@ type Mutation {
         flightId: ID!
         bookingDate: String!
         status: String!
-        seatNumber: String!
+        seatId: ID!
+        baggageWeight: String!
+        baggageType: String!
     ): Booking
 
     createAirLine(
@@ -34,11 +36,10 @@ type Mutation {
 
     createFlight(
         name: String!
-        originAirport: ID!
-        destinationAirport: ID!
         departureTime: String!
         arrivalTime: String!
         airline: ID!
+        routeId: ID!
     ): Flight
 
     createPassenger(
@@ -48,6 +49,23 @@ type Mutation {
         phoneNumber: String
         passportNumber: String!
     ): Passenger
+
+    createSeat(
+        flightId: ID!
+        seatNumber: String!
+        classType: String!
+        isAvailable: String!
+        price: String!
+    ): Seat
+
+    createRoute(
+        routeId: ID!
+        originAirportId: ID!
+        destinationAirportId: ID!
+        routeCode: String!
+        description: String!
+        flights: [ID]
+    ): Route
 }
 
 type Booking {
@@ -56,7 +74,8 @@ type Booking {
     flight: Flight!
     bookingDate: String!
     status: String!
-    seatNumber: String!
+    seat: Seat!
+    baggage: Baggage!
 }
 
 type Passenger {
@@ -72,11 +91,10 @@ type Passenger {
 type Flight {
     id: ID!
     name: String!
-    originAirport: Airport
-    destinationAirport: Airport
     departureTime: String
     arrivalTime: String
-    airline: Airline
+    airline: Airline!
+    route: Route!
 }
 
 type Airport {
@@ -92,6 +110,31 @@ type Airline {
     name: String!
     code: String
     country: String
+}
+
+type Seat{
+    id: ID!
+    flight: Flight!
+    classType: String!
+    seatNumber: String!
+    isAvailable: Boolean!
+    price: Float!
+}
+
+type Baggage{
+    id: ID!
+    passenger: Passenger!
+    weight: String!
+    type: String!
+}
+
+type Route {
+    id: ID!
+    origin: Airport!
+    destination: Airport!
+    routeCode: String!
+    description: String!
+    flights: [Flight]
 }
 
 

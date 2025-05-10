@@ -3,19 +3,29 @@ mutation addBooking(
     $flightId: ID!
     $bookingDate: String!
     $status: String!
-    $seatNumber: String!
+    $seatId: ID!
+    $baggageWeight: String!
+    $baggageType: String!
 ) {
     addBooking(
         passengerId: $passengerId
         flightId: $flightId
         bookingDate: $bookingDate
         status: $status
-        seatNumber: $seatNumber
+        seatId: $seatId
+        baggageType: $baggageType
+        baggageWeight: $baggageWeight
     ) {
         id
         status
         bookingDate
-        seatNumber
+        seat {
+            id
+            seatNumber
+            isAvailable
+            price
+            classType
+        }
         passenger {
             id
             firstName
@@ -27,16 +37,6 @@ mutation addBooking(
         flight {
             id
             name
-            originAirport {
-                id
-                name
-                country
-            }
-            destinationAirport {
-                id
-                name
-                country
-            }
             departureTime
             arrivalTime
             airline {
@@ -44,6 +44,34 @@ mutation addBooking(
                 name
                 country
             }
+            route {
+                id
+                routeCode
+                description
+                origin {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+                destination {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+                flights {
+                    id
+                    name
+                }
+            }
+        }
+        baggage {
+            id
+            weight
+            type
         }
     }
 }

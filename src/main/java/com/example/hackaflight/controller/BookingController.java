@@ -2,12 +2,9 @@ package com.example.hackaflight.controller;
 
 import com.example.hackaflight.model.core.Booking;
 import com.example.hackaflight.service.BookingService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -22,21 +19,24 @@ public class BookingController {
             @Argument("flightId") Long flightId,
             @Argument("bookingDate") String bookingDate,
             @Argument("status") String status,
-            @Argument("seatNumber") String seatNumber
+            @Argument("seatId") Long seatId,
+            @Argument("baggageWeight") String baggageWeight,
+            @Argument("baggageType") String baggageType
     ) throws Exception {
-        Booking booking = bookingService.addBooking(
-                passengerId,
-                flightId,
-                bookingDate,
-                status,
-                seatNumber
-        );
+        try {
 
-        if(booking != null) {
-            return booking;
-        } else {
-            throw new Exception("Could not save the new booking");
+            return bookingService.addBooking(
+                    passengerId,
+                    flightId,
+                    bookingDate,
+                    status,
+                    seatId,
+                    baggageWeight,
+                    baggageType
+            );
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
-
     }
 }

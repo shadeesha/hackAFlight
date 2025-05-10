@@ -1,0 +1,39 @@
+mutation createRoute(
+    $routeId: ID!
+    $originAirportId: ID!
+    $destinationAirportId: ID!
+    $routeCode: String!
+    $description: String!
+    $flights: [ID]
+) {
+    createRoute(
+        routeId: $routeId
+        originAirportId: $originAirportId
+        destinationAirportId: $destinationAirportId
+        routeCode: $routeCode
+        description: $description
+        flights: $flights
+    ) {
+        id
+        routeCode
+        description
+        origin {
+            id
+            name
+            code
+            city
+            country
+        }
+        destination {
+            id
+            name
+            code
+            city
+            country
+        }
+        flights {
+            id
+            name
+        }
+    }
+}
