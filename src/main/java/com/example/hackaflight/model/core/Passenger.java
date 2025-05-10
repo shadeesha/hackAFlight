@@ -29,6 +29,18 @@ public class Passenger {
     @Column
     private String passportNumber;
 
+    public Passenger() {
+
+    }
+
+    public Passenger(String firstName, String lastName, String email, String phoneNumber, String passportNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.passportNumber = passportNumber;
+    }
+
     public Passenger(Long id, String passportNumber, String phoneNumber, String email, String lastName, String firstName) {
         this.id = id;
         this.passportNumber = passportNumber;

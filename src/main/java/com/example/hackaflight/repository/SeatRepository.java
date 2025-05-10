@@ -1,13 +1,13 @@
 package com.example.hackaflight.repository;
 
-import com.example.hackaflight.model.core.Flight;
+import com.example.hackaflight.model.core.Seat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface FlightRepository extends JpaRepository<Flight, Long> {
+public interface SeatRepository extends JpaRepository<Seat, Long> {
 
-    Optional<Flight> findByName(String name);
+    Optional<Seat> findBySeatNumber(String seatName);
 }

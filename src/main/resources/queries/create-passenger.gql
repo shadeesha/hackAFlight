@@ -1,0 +1,22 @@
+mutation createPassenger(
+    $firstName: String!
+    $lastName: String!
+    $email: String
+    $phoneNumber: String
+    $passportNumber: String!
+) {
+    createPassenger(
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        phoneNumber: $phoneNumber
+        passportNumber: $passportNumber
+    ) {
+        id
+        firstName
+        lastName
+        email
+        phoneNumber
+        passportNumber
+    }
+}

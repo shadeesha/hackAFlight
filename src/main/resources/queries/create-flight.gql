@@ -1,37 +1,44 @@
 mutation createFlight(
     $name: String!
-    $originAirport: ID!
-    $destinationAirport: ID!
     $departureTime: String!
     $arrivalTime: String!
     $airline: ID!
+    $routeId: ID!
 ) {
     createFlight(
         name: $name
-        originAirport: $originAirport
-        destinationAirport: $destinationAirport
         arrivalTime: $arrivalTime
         departureTime: $departureTime
         airline: $airline
+        routeId: $routeId
     ) {
         id
         name
-        originAirport {
-            id
-            name
-            code
-            city
-            country
-        }
-        destinationAirport {
-            id
-            name
-            code
-            city
-            country
-        }
         departureTime
         arrivalTime
+        route {
+            id
+            routeCode
+            description
+            origin {
+                id
+                name
+                code
+                city
+                country
+            }
+            destination {
+                id
+                name
+                code
+                city
+                country
+            }
+            flights {
+                id
+                name
+            }
+        }
         airline {
             id
             name

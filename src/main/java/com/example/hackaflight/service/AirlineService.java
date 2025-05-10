@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AirlineService {
@@ -15,6 +16,7 @@ public class AirlineService {
     @Autowired
     private AirlineRepository airlineRepository;
 
+    @Transactional
     public Airline createAirline(String name, String code, String country) {
         Airline airline = new Airline(country, code, name);
         log.info("Saving Ariline {}", name);

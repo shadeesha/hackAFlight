@@ -1,0 +1,53 @@
+mutation createSeat(
+    $seatNumber: String!
+    $flightId: ID!
+    $classType: String!
+    $isAvailable: String!
+    $price: String!
+) {
+    createSeat(
+        seatNumber: $seatNumber
+        flightId: $flightId
+        classType: $classType
+        isAvailable: $isAvailable
+        price: $price
+
+    ) {
+        id
+        price
+        isAvailable
+        seatNumber
+        classType
+        flight {
+            id
+            name
+            departureTime
+            arrivalTime
+            airline {
+                id
+                name
+                code
+                country
+            }
+            route {
+                id
+                routeCode
+                description
+                origin {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+                destination {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+            }
+        }
+    }
+}
