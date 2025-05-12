@@ -1,0 +1,27 @@
+query getPassengers(
+    $firstName: String
+    $email: String
+    $passportNumber: String
+) {
+    getPassengers(
+        email: $email
+        passportNumber: $passportNumber
+        firstName: $firstName
+    ) {
+        id
+        firstName
+        lastName
+        email
+        phoneNumber
+        passportNumber
+        bookings {
+            id
+            seat {
+                id
+                price
+                classType
+                seatNumber
+            }
+        }
+    }
+}

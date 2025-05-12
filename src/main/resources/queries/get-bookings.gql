@@ -1,0 +1,69 @@
+query getBookings(
+    $passengerId: ID
+    $flightId: ID
+    $bookingDate: String
+) {
+    getBookings (
+        passengerId: $passengerId
+        flightId: $flightId
+        bookingDate: $bookingDate
+    ) {
+        id
+        status
+        bookingDate
+        seat {
+            id
+            seatNumber
+            isAvailable
+            price
+            classType
+        }
+        passenger {
+            id
+            firstName
+            lastName
+            passportNumber
+            email
+            phoneNumber
+        }
+        flight {
+            id
+            name
+            departureTime
+            arrivalTime
+            airline {
+                id
+                name
+                country
+            }
+            route {
+                id
+                routeCode
+                description
+                origin {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+                destination {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+                flights {
+                    id
+                    name
+                }
+            }
+        }
+        baggage {
+            id
+            weight
+            type
+        }
+    }
+}

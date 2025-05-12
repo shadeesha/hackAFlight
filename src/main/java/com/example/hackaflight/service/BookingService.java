@@ -8,12 +8,15 @@ import com.example.hackaflight.model.core.Passenger;
 import com.example.hackaflight.model.core.Seat;
 import com.example.hackaflight.model.support.Baggage;
 import com.example.hackaflight.repository.*;
+import com.example.hackaflight.repository.specification.BookingSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
@@ -92,5 +95,14 @@ public class BookingService {
         } finally {
             seatMap.remove(seatId);
         }
+    }
+
+    public List<Booking> getBookings(Long passengerId, Long flightId, String bookingDate) {
+        Specification<Booking> specification = Specification
+                .where(BookingSpecification.hasPassengerId(passengerId))
+                .and(BookingSpecification.hasBookinDate(bookingDate))
+                .and(BookingSpecification.hasFlightId(flightId));
+
+        return bookingRepository.findAll(specification);
     }
 }

@@ -3,11 +3,30 @@ type Query{
         name: String!
     ): Flight
 
-    getAllBookings: [Booking]
+    getBookings(
+        passengerId: ID
+        flightId: ID
+        bookingDate: String
+    ): [Booking]
 
-    getPassengerBookings(passengerId: ID!): [Booking]
+    getAirLines(
+        name: String
+        code: String
+        country: String
+    ): [Airline]
 
-    getFlightBookings(flightId: ID!): [Booking]
+    getAirports(
+        code: String
+        name: String
+        city: String
+        country: String
+    ): [Airport]
+
+    getPassengers(
+        firstName: String
+        email: String
+        passportNumber: String
+    ) : [Passenger]
 }
 
 type Mutation {
@@ -85,7 +104,7 @@ type Passenger {
     email: String
     phoneNumber: String
     passportNumber: String
-
+    bookings: [Booking]
 }
 
 type Flight {
@@ -110,6 +129,7 @@ type Airline {
     name: String!
     code: String
     country: String
+    flights: [Flight]
 }
 
 type Seat{

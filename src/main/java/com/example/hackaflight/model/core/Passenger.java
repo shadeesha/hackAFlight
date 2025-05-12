@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Entity
@@ -29,6 +31,10 @@ public class Passenger {
     @Column
     private String passportNumber;
 
+    @OneToMany
+    @JoinColumn(name = "booking_id")
+    private List<Booking> bookings;
+
     public Passenger() {
 
     }
@@ -48,6 +54,16 @@ public class Passenger {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
+    }
+
+    public Passenger(Long id, String firstName, String lastName, String email, String phoneNumber, String passportNumber, List<Booking> bookings) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.passportNumber = passportNumber;
+        this.bookings = bookings;
     }
 
     @Override

@@ -1,0 +1,39 @@
+query getAirLines(
+    $name : String
+    $code : String
+    $country : String
+) {
+    getAirLines(
+        name: $name
+        code: $code
+        country: $country
+    ) {
+        id
+        country
+        code
+        country
+        flights {
+            id
+            name
+            departureTime
+            arrivalTime
+            route {
+                id
+                origin {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+                destination {
+                    id
+                    name
+                    code
+                    city
+                    country
+                }
+            }
+        }
+    }
+}
