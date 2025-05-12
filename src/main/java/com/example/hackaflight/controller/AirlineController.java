@@ -5,10 +5,10 @@ import com.example.hackaflight.service.AirlineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import java.sql.SQLException;
-import java.util.Map;
+import java.util.List;
 
 @Controller
 public class AirlineController {
@@ -28,5 +28,14 @@ public class AirlineController {
         } else {
             throw new NullPointerException("Could not save the Airline");
         }
+    }
+
+    @QueryMapping
+    public List<Airline> getAirLines(
+        @Argument("name") String name,
+        @Argument("code") String code,
+        @Argument("country") String country
+    ) {
+        return airlineService.getAirLines(name, code, country);
     }
 }

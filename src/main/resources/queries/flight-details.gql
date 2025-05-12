@@ -5,20 +5,6 @@ query flightDetails(
         name: $name
     ) {
         name
-        originAirport {
-            id
-            name
-            city
-            country
-            code
-        }
-        destinationAirport {
-            id
-            name
-            city
-            country
-            code
-        }
         departureTime
         arrivalTime
         airline {
@@ -26,6 +12,22 @@ query flightDetails(
             name
             code
             country
+        }
+        route {
+            id
+            routeCode
+            origin {
+                id
+                name
+                code
+                country
+            }
+            destination {
+                id
+                name
+                code
+                country
+            }
         }
     }
 }

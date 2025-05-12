@@ -5,7 +5,10 @@ import com.example.hackaflight.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 @Controller
 public class BookingController {
@@ -38,5 +41,14 @@ public class BookingController {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+    }
+
+    @QueryMapping
+    public List<Booking> getBookings(
+            @Argument("passengerId") Long passengerId,
+            @Argument("flightId") Long flightId,
+            @Argument("bookingDate") String bookingDate
+    ) {
+        return bookingService.getBookings(passengerId, flightId, bookingDate);
     }
 }
