@@ -1,6 +1,6 @@
 package com.example.hackaflight.model.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.hackaflight.model.support.Baggage;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,16 +29,33 @@ public class Booking {
     @Column
     private String status;
 
-    @Column
-    private String seatNumber;
+    @OneToOne
+    @JoinColumn(name = "seat_id")
+    private Seat seat;
 
-    public Booking(Long id, String seatNumber, String status, String bookingDate, Flight flight, Passenger passenger) {
+    @OneToOne
+    @JoinColumn(name = "baggage_id")
+    private Baggage baggage;
+
+    public Booking(){}
+
+    public Booking(Passenger passenger, Flight flight, String bookingDate, String status, Seat seatNumber, Baggage baggage) {
+        this.passenger = passenger;
+        this.flight = flight;
+        this.bookingDate = bookingDate;
+        this.status = status;
+        this.seat = seatNumber;
+        this.baggage = baggage;
+    }
+
+    public Booking(Long id, Seat seat, String status, String bookingDate, Flight flight, Passenger passenger, Baggage baggage) {
         this.id = id;
-        this.seatNumber = seatNumber;
+        this.seat = seat;
         this.status = status;
         this.bookingDate = bookingDate;
         this.flight = flight;
         this.passenger = passenger;
+        this.baggage = baggage;
     }
 
     @Override
@@ -49,7 +66,7 @@ public class Booking {
                 ", flight=" + flight +
                 ", bookingDate='" + bookingDate + '\'' +
                 ", status='" + status + '\'' +
-                ", seatNumber='" + seatNumber + '\'' +
+                ", seatNumber='" + seat.getSeatNumber() + '\'' +
                 '}';
     }
 }

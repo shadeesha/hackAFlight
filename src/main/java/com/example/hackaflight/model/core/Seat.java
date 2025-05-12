@@ -30,6 +30,16 @@ public class Seat {
     @Column
     private double price;
 
+    public Seat(){}
+
+    public Seat(Flight flight, double price, boolean isAvailable, String seatNumber, String classType) {
+        this.flight = flight;
+        this.price = price;
+        this.isAvailable = isAvailable;
+        this.seatNumber = seatNumber;
+        this.classType = classType;
+    }
+
     public Seat(Long id, double price, String classType, boolean isAvailable, String seatNumber, Flight flight) {
         this.id = id;
         this.price = price;
