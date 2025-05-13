@@ -2,17 +2,17 @@
 
 A scalable, microservice-ready Flight Booking Platform developed using Spring Boot. The system supports REST and GraphQL APIs, integrates RabbitMQ for asynchronous messaging, and leverages MySQL as the primary datastore. The entire application is deployed on AWS.
 
-## 🚀 Features
+##  Features
 
-- ✈️ Create, update, and manage airlines, airports, flights, and bookings
-- 👤 Manage passengers and link them to flight bookings
-- 🧾 RESTful APIs for easy integration
-- 📦 GraphQL API for flexible queries
-- 📩 Asynchronous communication with RabbitMQ
-- 🗃️ MySQL for relational data persistence
-- 📊 Spring Boot Actuator for system health and metrics
-- ☁️ AWS EC2 deployment-ready
-## 🛠️ Tech Stack
+-  Create, update, and manage airlines, airports, flights, and bookings
+-  Manage passengers and link them to flight bookings
+-  RESTful APIs for easy integration
+-  GraphQL API for flexible queries
+-  Asynchronous communication with RabbitMQ
+-  MySQL for relational data persistence
+-  Spring Boot Actuator for system health and metrics
+-  AWS EC2 deployment-ready
+##  Tech Stack
 
 - **Java 22**
 - **Spring Boot**
@@ -49,7 +49,7 @@ A scalable, microservice-ready Flight Booking Platform developed using Spring Bo
 ├── 📄 README.md                  # Project overview and documentation
 └── 📄 pom.xml                    # Maven dependencies and build plugins
 ```
-## 🌐 API Endpoints
+##  API Endpoints
 Below are the available REST endpoints for the Flight Booking Platform. All endpoints are accessible via `http://localhost:8080`.
 - **Create Airline**  
   `GET /create-airline`  
@@ -134,7 +134,7 @@ Below are the available REST endpoints for the Flight Booking Platform. All endp
       ```text
       http://localhost:8080/get-bookings?passengerId=3&flightId=1
 
-## ☁️ AWS Setup
+##  AWS Setup
 - Amazon EC2: The application is hosted on an EC2 instance, providing the necessary compute power to run the backend and services.
 - Amazon RDS: A managed relational database service is used to handle the application's data storage requirements, ensuring high availability, automatic backups, and easy scaling.
 - RabbitMQ on Docker: RabbitMQ is running within a Docker container on the EC2 instance, providing reliable messaging for the backend services.
@@ -144,7 +144,7 @@ ip :
 port : 
 example request : 
 ```
-## 💾 Database
+##  Database
 ```
 +---------------------+        +---------------------+         +---------------------+
 |       Airline       |        |      TFlight        |         |     TBooking        |
@@ -211,6 +211,6 @@ Relationships:
 6. tbooking → tbaggage: One-to-One (each booking has one baggage)
 7. tbooking → tseat: One-to-One (each booking has one seat)
 
-## 📊 Monitoring
+##  Monitoring
 
-## 🧪 Testing
+##  Testing
